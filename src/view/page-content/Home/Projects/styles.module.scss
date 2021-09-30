@@ -1,0 +1,64 @@
+@import 'src/view/styles/variables.scss';
+
+.projects {
+  padding-bottom: 2em;
+
+  @media(min-width: $screen-md) {
+    padding-bottom: 8em;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    display: block;
+    max-width: 10em;
+    padding-bottom: 0.25em;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 1.5em;
+    border-bottom: 4px solid $primary;
+  }
+
+  .project-box {
+    .project-image {
+      transition: 0.3s ease;
+      border-radius: 4px;
+      min-height: 20em;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      box-shadow: 4px 4px 24px rgba($black, 0.15);
+
+      @media(min-width: $screen-md) {
+        min-height: 15em;
+      }
+
+      &:hover {
+        box-shadow: 4px 4px 24px rgba($black, 0.5);
+
+        .overlay {
+          opacity: 1;
+        }
+      }
+
+      .overlay {
+        transition: 0.3s ease;
+        opacity: 0;
+        position: absolute;
+        border-radius: 4px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($black, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h4 {
+          color: $white;
+          font-size: $font-lg;
+        }
+      }
+    }
+  }
+}

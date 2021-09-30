@@ -1,0 +1,12 @@
+@import './variables.scss';
+
+p {
+  font-size: 1rem;
+  padding-bottom: 1em;
+  font-weight: $font-light;
+  font-family: $second-font;
+
+  @media(min-width: $screen-md) {
+    font-size: 1.2rem;
+  } 
+}

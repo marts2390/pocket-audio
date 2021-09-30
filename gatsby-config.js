@@ -17,15 +17,20 @@ module.exports = {
       resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components you should change the injection order.
       options: {
-        // stylesProvider: {
-        //   injectFirst: true,
-        // },
+        stylesProvider: {
+          injectFirst: true,
+        },
       },
     },
     {
-      resolve: `gatsby-plugin-layout`,
+      resolve: `gatsby-plugin-sass`,
       options: {
-        component: require.resolve(`./src/components/layout/index.tsx`),
+        cssLoaderOptions: {
+          esModule: false,
+          modules: {
+            namedExport: false,
+          },
+        },
       },
     },
     {
@@ -40,8 +45,23 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        typeName: "WPGraphQL",
+        fieldName: "wpcontent",
+        // url: `http://localhost:8888/graphql`,
+        url: `http://admin.pocketaudiostudio.co.uk/graphql`,
+      },
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
+}
+
+exports.createPages = ({ graphql, actions }) => {
+  const { createRedirect } = actions
+  createRedirect({ fromPath: '/', toPath: '/home', isPermanent: true })
+  // Create pages here
 }

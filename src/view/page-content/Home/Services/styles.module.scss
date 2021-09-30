@@ -1,0 +1,28 @@
+@import 'src/view/styles/variables.scss';
+
+.services {
+  padding: 4em 0;
+  max-width: 768px;
+  margin: 0 auto;
+
+  .services-item {
+    text-align: center;
+    padding-bottom: 0.5em;
+    margin: 0 auto;
+
+    svg {
+      font-size: 3.5rem;
+      color: $primary;
+    }
+
+    p {
+      padding-top: 0.5em;
+      font-weight: $font-medium;
+      font-size: 1rem;
+
+      @media(min-width: $screen-sm) {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

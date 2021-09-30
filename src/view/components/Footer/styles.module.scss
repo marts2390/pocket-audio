@@ -1,0 +1,46 @@
+@import 'src/view/styles/variables.scss';
+
+.footer {
+  background-color: $black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  flex-direction: column;
+
+  img {
+    max-width: 20em;
+  }
+
+  .footer-menu {
+    padding: 1em 0;
+    display: flex;
+
+    a {
+      transition: 0.3s ease;
+      color: $primary;
+      margin-right: 1.5em;
+      text-decoration: none;
+      font-weight: $font-medium;
+      text-transform: uppercase;
+      position: relative;
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &::after {
+        transition: 0.3s ease;
+        content: '';
+        display: block;
+        background-color: $primary;
+        height: 2px;
+        left: 0;
+        width: 0;
+        bottom: 0;
+      }
+    }
+  }
+}

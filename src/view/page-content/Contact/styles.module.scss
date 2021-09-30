@@ -1,0 +1,56 @@
+@import 'src/view/styles/variables.scss';
+@import 'src/view/styles/classes.scss';
+
+.contact {
+  .main {
+    padding: 4em 2em;
+    @extend .container;
+
+    .content {
+      padding-bottom: 2em;
+    }
+
+    .focused {
+      fieldset {
+        border-color: $primary;
+        border-width: 2px;
+      }
+    }
+
+    .error {
+      fieldset {
+        border-color: $red;
+        border-width: 2px;
+      }
+    }
+
+    .label {
+      color: $primary;
+    }
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+
+  .button {
+    background-color: $primary;
+    color: $white;
+    min-width: 15em;
+    margin-top: 1.5em;
+
+    &:hover {
+      background-color: rgba($primary, 0.85);
+    }
+  }
+}
+
+.success {
+  font-size: 1.6rem;
+}
+
+.error {
+  color: $red;
+  font-weight: $font-medium;
+}

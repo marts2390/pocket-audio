@@ -1,0 +1,32 @@
+@import 'src/view/styles/variables.scss';
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .social-item {
+    transition: 0.3s ease;
+    margin-right: 1em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    svg {
+      color: $primary;
+      width: 2em;
+      height: 3em;
+    }
+
+    &.sound-cloud {
+      svg {
+        width: 4em;
+      }
+    }
+  }
+}

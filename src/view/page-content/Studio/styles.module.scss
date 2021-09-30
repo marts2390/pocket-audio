@@ -1,0 +1,32 @@
+@import 'src/view/styles/variables.scss';
+@import 'src/view/styles/classes.scss';
+
+.studio {
+  .main {
+    padding: 2em 2em;
+    @extend .container;
+
+    @media(min-width: $screen-sm) {
+      padding: 6em 2em;
+    }
+  }
+
+  .masonry-grid-container {
+    .masonry-grid {
+      display: flex;
+      margin-left: -0.5em; /* gutter size offset */
+      width: auto;
+    }
+
+    .masonry-grid-column {
+      padding-left: 0.5em; /* gutter size */
+      background-clip: padding-box;
+    }
+
+    /* Style your items */
+    .masonry-grid-column > div {
+      /* change div to reference your elements you put in <Masonry> */
+      margin-bottom: 0.25em;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import 'src/view/styles/variables.scss';
+@import 'src/view/styles/classes.scss';
+
+.header {
+  padding: 1em; 
+  background-color: rgba(white, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    @media(min-width: $screen-sm) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @extend .container;
+  }
+
+  .logo {
+    margin-bottom: 0.5em;
+  }
+}
