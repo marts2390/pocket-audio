@@ -20,6 +20,7 @@ const FooterComponent: FC<IFooterComponentProps> = ({
   logo,
   menuItems,
 }) => {
+  
   return (
     <div className={ styles.footer }>
       {logo && (
