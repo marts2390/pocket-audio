@@ -30,9 +30,9 @@ jobs:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh/
-          echo "${{ secrets.ssh_private_key }}" > ~/.ssh/deploy_key
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           sudo chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H "${{ secrets.host }}" > ~/.ssh/known_hosts
       
       - name: SFTP upload
-        run: sftp -i ~/.ssh/deploy_key ${{ secrets.deploy_user }}@${{ secrets.host }} <<< $'cd ${{ secrets.destination_path }} \n put -r public/*'
+        run: sftp -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_USER }}@${{ secrets.HOST }} <<< $'cd ${{ secrets.DESTINATION_PATH }} \n put -r public/*'
