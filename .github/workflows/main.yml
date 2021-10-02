@@ -32,7 +32,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.KEY }}
+          password: ${{ secrets.DEPLOY_PASS }}
           port: ${{ secrets.PORT }}
           script: whoami
       
