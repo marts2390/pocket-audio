@@ -34,7 +34,5 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           password: ${{ secrets.DEPLOY_PASS }}
           port: ${{ secrets.PORT }}
-          script: whoami
-      
-      - name: SFTP upload
-        run: sftp -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_USER }}@${{ secrets.HOST }} <<< $'cd ${{ secrets.DESINATION_PATH }} \n put -r public/*'
+          script: cd /marts2390/pocket-audio; git pull; hugo; cp -r ./public/* /public_html/.; rm -rf ./public
+
