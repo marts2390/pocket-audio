@@ -30,9 +30,8 @@ jobs:
       - name: Setup SSH
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          password: ${{ secrets.DEPLOY_PASS }}
-          port: ${{ secrets.PORT }}
-          script: cd /marts2390/pocket-audio; git pull; hugo; cp -r ./public/* /public_html/.; rm -rf ./public
-
+         host: ${{ secrets.HOST }}
+         username: ${{ secrets.USERNAME }}
+         key: ${{ secrets.SSH_PRIVATE_KEY }}
+         port: ${{ secrets.PORT }}
+         script: cd /marts/pocket-audio; git pull; hugo; cp -r ./public/* /public_html/.; rm -rf ./public
