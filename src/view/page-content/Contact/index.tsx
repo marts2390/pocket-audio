@@ -39,6 +39,7 @@ const ContactPageComponent:FC<IContactPageProps> = ({ data }) => {
 
   const onSubmit =  async (e: IFormikProps) => {
     setLoading(true)
+    
 
     try {
       await axios.post("https://getform.io/f/86e987d2-19f6-43e7-a401-f943b9368893", {
