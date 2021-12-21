@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC } from 'react'
 import Header from '../Header'
 import Footer from '../Footer'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -14,11 +14,7 @@ import '../../styles/base.scss'
 import '../../styles/reset.scss'
 import '../../styles/styles.scss'
  
- interface ILayoutProps {
-   children: ReactNode;
- }
- 
-const Layout: FC<ILayoutProps> = ({ children }) => {
+const Layout: FC = ({ children }) => {
   const headerData = useStaticQuery(graphql`
   {
     wpMenu {
@@ -38,7 +34,7 @@ const Layout: FC<ILayoutProps> = ({ children }) => {
       altText
     }
   }`)
- 
+
   return (
     <div className={ styles.layout }>
       <Header headerData={ headerData }/>

@@ -15,13 +15,13 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    max-width: 1400px;
     
     @media(min-width: $screen-sm) {
+      padding: 1.5em 0;
       flex-direction: row;
       justify-content: space-between;
     }
-
-    @extend .container;
   }
 
   .logo {

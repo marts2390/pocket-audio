@@ -5,10 +5,10 @@
   color: $primary;
   margin-right: 1.5em;
   text-decoration: none;
-  font-weight: $font-medium;
+  font-weight: $font-semibold;
   text-transform: uppercase;
   position: relative;
-  font-size: 0.9rem;
+  font-size: 1rem;
 
   &:hover {
     &::after {

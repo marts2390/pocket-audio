@@ -33,6 +33,11 @@
           max-width: 900px;
           margin: 0 auto;
 
+          .logo {
+            max-width: 25em;
+            margin-bottom: 2em;
+          }
+
           h1 {
             font-size: 3rem;
             text-transform: uppercase;
