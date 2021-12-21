@@ -28,10 +28,12 @@ const HomePageComponent: FC<IHomeScreenProps> = ({ data }) => {
         <div className={ styles.bannerOverlay }>
           <div className={ styles.bannerContent }>
             <div className={ styles.bannerInner }>
-              <img
-                className={ styles.logo }
-                src={ data.data.wpMediaItem.mediaItemUrl }
-              />
+              {data.data.wpMediaItem && (
+                <img
+                  className={ styles.logo }
+                  src={ data.data.wpMediaItem.mediaItemUrl }
+                />
+              )}
               <div className={ styles.servicesList }>
                 {getServices.map((item: string) => (
                   <p key={ item }>{item}</p>

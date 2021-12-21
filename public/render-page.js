@@ -41920,13 +41920,13 @@ var plugins = [{
     "background_color": "#663399",
     "theme_color": "#663399",
     "display": "minimal-ui",
-    "icon": "src/images/gatsby-icon.png",
+    "icon": "src/images/favicon.svg",
     "legacy": true,
     "theme_color_in_head": true,
     "cache_busting_mode": "query",
     "crossOrigin": "anonymous",
     "include_favicon": true,
-    "cacheDigest": "4a9773549091c227cd2eb82ccd9c5e3a"
+    "cacheDigest": "c574b18d9064b82ec0f482310cd49dd6"
   }
 }];
 /* global plugins */

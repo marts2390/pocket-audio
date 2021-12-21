@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    max-width: 1400px;
+    max-width: 1200px;
     
     @media(min-width: $screen-sm) {
       padding: 1.5em 0;
@@ -25,6 +25,6 @@
   }
 
   .logo {
-    margin-bottom: 0.5em;
+    width: 10em;
   }
 }

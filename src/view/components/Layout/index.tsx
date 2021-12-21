@@ -28,12 +28,14 @@ const Layout: FC = ({ children }) => {
         }
       }
     }
-    wpMediaItem(title: {eq: "logo-4"}) {
+    wpMediaItem(title: {eq: "line-logo"}) {
       id
       mediaItemUrl
       altText
     }
   }`)
+
+  console.log(headerData.wpMediaItem)
 
   return (
     <div className={ styles.layout }>
