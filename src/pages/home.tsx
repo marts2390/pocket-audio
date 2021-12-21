@@ -14,6 +14,12 @@ export default IndexPageComponent
 
 export const query = graphql`
   {
+    wpMediaItem(title: {eq: "logo-4"}) {
+      id
+      mediaItemUrl
+      altText
+    }
+    
     wpPage(slug: {eq: "home"}) {
       id
       allPages {
