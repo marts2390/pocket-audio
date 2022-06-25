@@ -3,7 +3,7 @@
 .projects {
   padding-bottom: 2em;
 
-  @media(min-width: $screen-md) {
+  @media (min-width: $screen-md) {
     padding-bottom: 8em;
   }
 
@@ -28,7 +28,7 @@
       position: relative;
       box-shadow: 4px 4px 24px rgba($black, 0.15);
 
-      @media(min-width: $screen-md) {
+      @media (min-width: $screen-md) {
         min-height: 15em;
       }
 
@@ -56,11 +56,11 @@
         padding: 1em;
 
         h4 {
+          text-align: center;
           color: $white;
           font-size: $font-md;
           letter-spacing: 2px;
           font-weight: $font-medium;
-          text-align: center;
         }
       }
     }
