@@ -1,12 +1,11 @@
 import React, { FC } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import Menu from '../Menu'
+import Logo from '../Logo'
 import styles from './styles.module.scss'
+import SocialLinks from '../SocialLinks'
 
 interface IFooterComponentProps {
-  logo: {
-    id: string;
-    mediaItemUrl: string;
-    altText: string;
-  }
   menuItems: {
     id: string;
     label: string;
@@ -17,23 +16,41 @@ interface IFooterComponentProps {
 }
 
 const FooterComponent: FC<IFooterComponentProps> = ({
-  logo,
   menuItems,
 }) => {
+
+  const footerData = useStaticQuery(graphql`
+  {
+    wpMediaItem(title: {eq: "logo-icon"}) {
+      id
+      mediaItemUrl
+      altText
+    }
+
+    allWpSocialLink {
+      nodes {
+        customSocialLinks {
+          facebook
+          instagram
+          soundcloud
+          twitter
+          youtube
+        }
+      }
+    }
+  }
+`)
+
   return (
     <div className={ styles.footer }>
-      {logo && (
-        <img src={ logo.mediaItemUrl } />
+      {footerData.wpMediaItem && (
+        <Logo logoUrl={ footerData.wpMediaItem.mediaItemUrl } /> 
       )}
       <div className={ styles.footerMenu }>
-        {menuItems.map((item) => (
-          <a
-            key={ item.id }
-            href={ item.url }
-          >
-            {item.label}
-          </a>
-        ))}
+        <Menu />
+      </div>
+      <div>
+        <SocialLinks links={ footerData.allWpSocialLink.nodes[0].customSocialLinks } />
       </div>
     </div>
   )

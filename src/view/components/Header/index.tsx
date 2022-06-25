@@ -2,24 +2,40 @@ import React, { FC } from "react"
 import Menu from '../Menu'
 import Logo from '../Logo'
 import styles from './styles.module.scss'
+import { useStaticQuery, graphql } from 'gatsby'
+import { useLocation } from '@reach/router'
+import cn from 'classnames'
 
-interface IHeaderProps {
-  headerData: any;
-}
+const HeaderComponent:FC = () => {
+  const { pathname } = useLocation()
+  const headerClasses = cn(styles.header, {
+    [styles.isHome]: pathname.includes('/home')
+  })
 
-const HeaderComponent:FC<IHeaderProps> = ({
-  headerData
-}) => (
-  <div className={ styles.header }>
-    <div className={ styles.container }>
-      <div className={ styles.logo }>
-        {headerData.wpMediaItem && (
-          <Logo logoData={ headerData.wpMediaItem }/>
-        )}
+  const logo =  useStaticQuery(graphql`
+  {
+    wpMediaItem(title: {eq: "logo-icon"}) {
+      id
+      mediaItemUrl
+      altText
+    }
+  }
+  `)
+
+  return (
+    <div className={ headerClasses }>
+      <div className={ styles.headerContainer }>
+        <div className={ styles.logo }>
+          {logo.wpMediaItem && (
+            <Logo logoUrl={ logo.wpMediaItem.mediaItemUrl }/>
+          )}
+        </div>
+        <div className={ styles.menu }>
+          <Menu />
+        </div>
       </div>
-      <Menu menuData={ headerData.wpMenu.menuItems.nodes }/>
     </div>
-  </div>
-)
+  )
+}
 
 export default HeaderComponent

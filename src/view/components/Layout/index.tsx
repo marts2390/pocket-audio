@@ -28,25 +28,16 @@ const Layout: FC = ({ children }) => {
         }
       }
     }
-    wpMediaItem(title: {eq: "line-logo"}) {
-      id
-      mediaItemUrl
-      altText
-    }
-  }`)
-
-  console.log(headerData.wpMediaItem)
+  }
+  `)
 
   return (
     <div className={ styles.layout }>
-      <Header headerData={ headerData }/>
+      <Header />
       <main>
         {children}
       </main>
-      <Footer
-        logo={ headerData.wpMediaItem }
-        menuItems={ headerData.wpMenu.menuItems.nodes }
-      />
+      <Footer menuItems={ headerData.wpMenu.menuItems.nodes } />
     </div>
   )
 }

@@ -1,17 +1,43 @@
 
 import React, { FC } from 'react'
-import { Fade } from 'react-reveal'
-import Masonry from 'react-masonry-css'
+import { Grid } from '@material-ui/core'
 import PageBanner from '../../components/PageBanner'
 import { createMarkup } from '../../../util'
 import styles from './styles.module.scss'
 
 interface IStudioPageComponentProps {
-    data: any;
+  data: any;
 }
 
 const StudioPageComponent: FC<IStudioPageComponentProps> = ({ data }) => {
-  const { wpPage, allWpMediaItem } = data.data
+  const { wpPage } = data.data
+  const { 
+    listOneList, 
+    listTwoList, 
+    listThreeList, 
+    listOneTitle, 
+    listTwoTitle, 
+    listThreeTitle, 
+    listFourTitle, 
+    listFourList 
+  } = wpPage.studioPageFields
+
+  const gearList = [{
+    title: listOneTitle,
+    list: listOneList.split(','),
+  }, 
+  {
+    title: listTwoTitle,
+    list: listTwoList.split(','),
+  }, 
+  {
+    title: listThreeTitle,
+    list: listThreeList.split(','),
+  },
+  {
+    title: listFourTitle,
+    list: listFourList.split(','),
+  }]
 
   return (
     <div className={ styles.studio }>
@@ -20,28 +46,35 @@ const StudioPageComponent: FC<IStudioPageComponentProps> = ({ data }) => {
         title={ wpPage.title }
       />
       <div className={ styles.main }>
-        <div dangerouslySetInnerHTML={ createMarkup(wpPage.content) } />
-      </div>
-
-      <div className={ styles.masonryGridContainer }>
-        <Masonry
-          breakpointCols={ 3 }
-          className={ styles.masonryGrid }
-          columnClassName={ styles.masonryGridColumn }
+        <h2 className={ styles.sectionTitle }>Our Gear</h2>
+        <div
+          className={ styles.content }
+          dangerouslySetInnerHTML={ createMarkup(wpPage.content) }
+        />
+        <Grid
+          container
+          className={ styles.gearLists }
+          spacing={ 4 }
         >
-          {allWpMediaItem.nodes.map((image) => (
-            <div key={ image.id }>
-              <Fade
-                left
-                distance="200px"
+          {gearList.map((item) => (
+            <Grid
+              key={ item.list }
+              item
+              sm={ 6 }
+            >
+              <div
+                className={ styles.gearListItem }
               >
-                <img
-                  src={ image.sourceUrl }
-                />
-              </Fade>
-            </div>
+                <h2>{item.title}</h2>
+                <ul>
+                  {item.list.map((listItem: string) => (
+                    <li key={ listItem }>{listItem}</li>
+                  ))}
+                </ul>
+              </div>
+            </Grid>
           ))}
-        </Masonry>
+        </Grid>
       </div>
     </div>
   )

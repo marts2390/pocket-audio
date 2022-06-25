@@ -3,13 +3,22 @@ import { graphql } from 'gatsby'
 
 import Layout from '../view/components/Layout'
 import AboutPage from '../view/page-content/About'
+import Seo from '../view/components/Seo'
 
-const AboutPageComponent: FC = (data: any) => (
-  <Layout>
-    <AboutPage data={ data } />
-  </Layout>
-)
+const AboutPageComponent: FC = (dataProps: any) => {
+  const { data } = dataProps
+  const { title, metaDesc } = data.wpPage.seo
 
+  return (
+    <Layout>
+      <Seo
+        title={ title }
+        description={ metaDesc }
+      />
+      <AboutPage data={ dataProps } />
+    </Layout>
+  )
+}
 export default AboutPageComponent
 
 export const query = graphql`
@@ -27,6 +36,8 @@ export const query = graphql`
       aboutPageFields {
         blockOneText
         blockTwoText
+        fredBio
+        alexBio
         blockTwoImage {
           altText
           title
@@ -37,6 +48,24 @@ export const query = graphql`
           title
           altText
         }
+        fredImage {
+          altText
+          title
+          sourceUrl
+        }
+        alexImage {
+          sourceUrl
+          title
+          altText
+        }
+      }
+      seo {
+        title
+        metaDesc
+        metaKeywords
+        focuskw
+        opengraphTitle
+        opengraphDescription
       }
     }
   }

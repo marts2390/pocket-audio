@@ -1,20 +1,20 @@
 import React, { FC, useState } from 'react'
 import PageBanner from '../../components/PageBanner'
-import { Formik, Form, FormikProps } from 'formik'
-import { TextField, Grid, Button } from '@material-ui/core'
+import { Formik, Form, FormikProps, useFormik } from 'formik'
+import { TextField, Grid } from '@material-ui/core'
+import Button from '../../components/Button'
 import { createMarkup } from '../../../util'
-import axios from 'axios'
 import styles from './styles.module.scss'
 import * as Yup from 'yup'
 
 interface IContactPageProps {
-    data: any;
+  data: any;
 }
 
 interface IFormikProps {
-    name: string;
-    email: string;
-    message: string;
+  name: string;
+  email: string;
+  message: string;
 }
 
 const ContactPageComponent:FC<IContactPageProps> = ({ data }) => {
@@ -25,7 +25,7 @@ const ContactPageComponent:FC<IContactPageProps> = ({ data }) => {
   const [error, setError] = useState(false)
   const [sent, setSent] = useState(false)
 
-  const initialValues = {
+  const initialValues: IFormikProps = {
     name: '',
     email: '',
     message: '',
@@ -37,24 +37,34 @@ const ContactPageComponent:FC<IContactPageProps> = ({ data }) => {
     message: Yup.string().required('Required'),
   })
 
-  const onSubmit =  async (e: IFormikProps) => {
+  const onSubmit = async (e: IFormikProps, resetForm: () => void) => {
     setLoading(true)
-    
-
     try {
-      await axios.post("https://getform.io/f/86e987d2-19f6-43e7-a401-f943b9368893", {
-        from: e.name,
-        email: e.email,
-        message: e.message,
-      })
+      await fetch(
+        'https://getform.io/f/86e987d2-19f6-43e7-a401-f943b9368893',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: e.name,
+            email: e.email,
+            message: e.message,
+          })
+        }
+      )
     } catch(err) {
       console.log(err)
       setError(true)
       setLoading(false)
+
+      return
     }
 
     setLoading(false)
     setSent(true)
+    resetForm()
   }
 
   return (
@@ -64,23 +74,22 @@ const ContactPageComponent:FC<IContactPageProps> = ({ data }) => {
         title={ wpPage.title }
       />
       <div className={ styles.main }>
-        
-        {!sent ? (
-          <>
-            <div
-              className={ styles.content }
-              dangerouslySetInnerHTML={ createMarkup(wpPage.content) }
-            />
-            {error && <p className={ styles.error }>Oops looks like something went wrong, please try again</p>}
+        <>
+          <div
+            className={ styles.content }
+            dangerouslySetInnerHTML={ createMarkup(wpPage.content) }
+          />
+          <div className={ styles.form }>
             <Formik
-              data-testid="garment-verification-form"
               initialValues={ initialValues }
-              onSubmit={ (e) => onSubmit(e) }
+              onSubmit={ (e, { resetForm }) => {
+                onSubmit(e, resetForm)
+              } }
               validationSchema={ validationSchema }
             >
               {(props: FormikProps<IFormikProps>) => {
                 const {
-                  handleChange, errors
+                  handleChange, errors, values
                 } = props
    
                 const buttonDisabled = !!errors.name || !!errors.email || !!errors.message
@@ -98,16 +107,18 @@ const ContactPageComponent:FC<IContactPageProps> = ({ data }) => {
                       >
                         <TextField 
                           error={ !!errors.name }
-                          variant="outlined"
+                          variant="filled"
                           label="Name *"
                           name="name"
+                          value={ values.name }
                           fullWidth
                           onChange={ handleChange }
                           classes={ {
-                            root: styles.textRoot
+                            root: styles.textRoot,
                           } }
                           InputProps={ {
                             classes: {
+                              root: styles.inputRoot,
                               focused: styles.focused,
                             },
                           } }
@@ -120,11 +131,12 @@ const ContactPageComponent:FC<IContactPageProps> = ({ data }) => {
                       >
                         <TextField
                           error={ !!errors.email }
-                          variant="outlined"
+                          variant="filled"
                           label="Email *"
                           fullWidth
                           name="email"
                           type="email"
+                          value={ values.email }
                           onChange={ handleChange }
                           InputProps={ {
                             classes: {
@@ -140,11 +152,12 @@ const ContactPageComponent:FC<IContactPageProps> = ({ data }) => {
                         <TextField 
                           error={ !!errors.message }
                           className={ styles.textArea }
-                          variant="outlined"
+                          variant="filled"
                           label="Message *"
                           fullWidth
                           name="message"
                           type="text"
+                          value={ values.message }
                           onChange={ handleChange }
                           multiline
                           minRows={ 10 }
@@ -157,23 +170,21 @@ const ContactPageComponent:FC<IContactPageProps> = ({ data }) => {
                         />
                       </Grid>
                     </Grid>
+                    {error && (
+                      <div  className={ styles.errorMessage }>
+                        <h2>Oops looks like something went wrong, please try again</h2>
+                      </div>
+                    )}
+                    {sent && (
+                      <div className={ styles.success }>
+                        <h2>{contactFields.successText}</h2>
+                      </div>
+                    )}
                     <div className={ styles.buttonContainer }>
-                      <Button 
-                        className={ styles.button }
-                        disabled={ buttonDisabled }
-                        variant="contained"
-                        size="large"
-                        type="submit"
-                        classes={ {
-                          root: styles.buttonRoot,
-                          contained: styles.contained,
-                          outlined: styles.outlined,
-                          containedPrimary: styles.containedPrimary,
-                          containedSecondary: styles.containedSecondary,
-                          outlinedPrimary: styles.outlinedPrimary,
-                          outlinedSecondary: styles.outlinedSecondary,
-                          label: styles.buttonText,
-                        } }
+                      <Button
+                        className={ styles.submitButton }
+                        type='submit'
+                        buttonDisabled={ buttonDisabled }
                       >
                         {loading ? 'Sending...' : 'Send'}
                       </Button>
@@ -182,12 +193,8 @@ const ContactPageComponent:FC<IContactPageProps> = ({ data }) => {
                 )
               }}
             </Formik>
-          </>
-        ) : (
-          <div className={ styles.success }>
-            <h2>{contactFields.successText}</h2>
           </div>
-        )}
+        </>
       </div>
     </div>
   )

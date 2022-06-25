@@ -3,8 +3,36 @@
 
 .about {
   .main {
-    padding: 6em 2em;
+    padding: 4em 2em;
     @extend .container;
+
+    @media (min-width: $screen-sm) {
+      padding: 6em 4em;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      display: block;
+      max-width: 17.5em;
+      padding-bottom: 0.25em;
+      margin-bottom: 1.5em;
+      border-bottom: 4px solid $primary;
+    }
+
+    .bio-section {
+      margin-top: 4em;
+    }
+
+    .page-content {
+      padding-top: 2em;
+
+      p {
+        font-size: 1rem;
+        font-weight: $font-light;
+        font-family: $second-font;
+        line-height: 1.5rem;
+      }
+    }
 
     .item {
       padding-bottom: 2em;
@@ -63,16 +91,13 @@
           font-size: 1rem;
           font-weight: $font-light;
           font-family: $second-font;
-
-          @media (min-width: $screen-md) {
-            font-size: 1.2rem;
-          }
+          line-height: 1.5rem;
         }
       }
     }
 
     .extra-content {
-      @media(min-width: $screen-sm) {
+      @media (min-width: $screen-sm) {
         padding-top: 4em;
       }
     }
