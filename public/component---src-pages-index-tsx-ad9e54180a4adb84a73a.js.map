@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-index-tsx-ad9e54180a4adb84a73a.js","mappings":"kLAIA,UAHc,WACZ,OAAO","sources":["webpack://gatsby-material-typescript-starter/./src/pages/index.tsx"],"sourcesContent":["import React from \"react\"\nconst index = () => {\n  return <></>\n}\nexport default index"],"names":[],"sourceRoot":""}
