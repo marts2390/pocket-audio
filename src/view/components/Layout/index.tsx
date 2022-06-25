@@ -28,23 +28,16 @@ const Layout: FC = ({ children }) => {
         }
       }
     }
-    wpMediaItem(title: {eq: "logo-4"}) {
-      id
-      mediaItemUrl
-      altText
-    }
-  }`)
+  }
+  `)
 
   return (
     <div className={ styles.layout }>
-      <Header headerData={ headerData }/>
+      <Header />
       <main>
         {children}
       </main>
-      <Footer
-        logo={ headerData.wpMediaItem }
-        menuItems={ headerData.wpMenu.menuItems.nodes }
-      />
+      <Footer menuItems={ headerData.wpMenu.menuItems.nodes } />
     </div>
   )
 }

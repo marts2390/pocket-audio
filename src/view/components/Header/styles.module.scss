@@ -2,29 +2,49 @@
 @import 'src/view/styles/classes.scss';
 
 .header {
-  padding: 1em; 
-  background-color: rgba(white, 0);
+  padding:1em 0 2em 0;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1;
+  margin-bottom: 1em;
 
-  .container {
+  @media (min-width: $screen-md) {
+    padding: 1em;
+  }
+
+  &.is-home {
+    background-color: rgba($black, 0.5);
+  }
+
+  .header-container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    max-width: 1400px;
-    
-    @media(min-width: $screen-sm) {
-      padding: 1.5em 0;
+    max-width: 85%;
+    margin: 0 auto;
+
+    @media (min-width: $screen-md) {
       flex-direction: row;
       justify-content: space-between;
     }
   }
 
+  .menu {
+    @media (max-width: $screen-md) {
+      padding-top: 1em;
+    }
+  }
+
   .logo {
-    margin-bottom: 0.5em;
+    width: 10em;
+    text-align: center;
+
+    @media (min-width: $screen-md) {
+      text-align: left;
+      padding: 0;
+    }
   }
 }

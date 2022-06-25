@@ -3,12 +3,21 @@ import { graphql } from 'gatsby'
 
 import Layout from '../view/components/Layout'
 import ContactPage from '../view/page-content/Contact'
+import Seo from '../view/components/Seo'
 
-const ContactPageComponent: FC = (data: any) => (
-  <Layout>
-    <ContactPage data={ data } />
-  </Layout>
-)
+const ContactPageComponent: FC = (dataProps: any) => {
+  const { data } = dataProps
+  const { title, metaDesc } = data.wpPage.seo
+  return (
+    <Layout>
+      <Seo
+        title={ title }
+        description={ metaDesc }
+      />
+      <ContactPage data={ dataProps } />
+    </Layout>
+  )
+}
 
 export default ContactPageComponent
 
@@ -20,6 +29,14 @@ export const query = graphql`
       content
       contactFields {
         successText
+      }
+      seo {
+        title
+        metaDesc
+        metaKeywords
+        focuskw
+        opengraphTitle
+        opengraphDescription
       }
       allPages {
         pageBanner {

@@ -3,18 +3,27 @@ import { graphql } from 'gatsby'
 
 import Layout from '../view/components/Layout'
 import HomePage from '../view/page-content/Home'
+import Seo from '../view/components/Seo'
 
-const IndexPageComponent:FC = (data: any) => (
-  <Layout>
-    <HomePage data={ data }/>
-  </Layout>
-)
+const HomePageComponent:FC = (dataProps: any) => {
+  const { data } = dataProps
+  const { title, metaDesc } = data.wpPage.seo
+  return (
+    <Layout>
+      <Seo
+        title={ title }
+        description={ metaDesc }
+      />
+      <HomePage data={ dataProps }/>
+    </Layout>
+  )
+}
 
-export default IndexPageComponent
+export default HomePageComponent
 
 export const query = graphql`
   {
-    wpMediaItem(title: {eq: "logo-4"}) {
+    wpMediaItem(title: {eq: "logo-text"}) {
       id
       mediaItemUrl
       altText
@@ -46,6 +55,15 @@ export const query = graphql`
           sourceUrl
           altText
         }
+      }
+
+      seo {
+        title
+        metaDesc
+        metaKeywords
+        focuskw
+        opengraphTitle
+        opengraphDescription
       }
     }
 

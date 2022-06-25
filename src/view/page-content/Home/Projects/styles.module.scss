@@ -53,10 +53,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 1em;
 
         h4 {
           color: $white;
-          font-size: $font-lg;
+          font-size: $font-md;
+          letter-spacing: 2px;
+          font-weight: $font-medium;
+          text-align: center;
         }
       }
     }

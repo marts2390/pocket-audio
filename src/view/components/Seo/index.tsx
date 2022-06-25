@@ -3,22 +3,22 @@ import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 type MetaProperty = {
-    property: string;
-    content: string;
+  property: string;
+  content: string;
 }
 
 type MetaName = {
-    name: string;
-    content: string;
+  name: string;
+  content: string;
 }
 
 type Meta = MetaName | MetaProperty
 
 export interface SEOProps {
-    title: string;
-    description?: string;
-    lang?: string;
-    meta?: Meta[];
+  title: string;
+  description?: string;
+  lang?: string;
+  meta?: Meta[];
 }
 
 const SEOComponent: FC<SEOProps> = ({
@@ -34,9 +34,6 @@ const SEOComponent: FC<SEOProps> = ({
                     siteMetadata {
                         title
                         description
-                        author {
-                            name
-                        }
                     }
                 }
             }
@@ -72,10 +69,6 @@ const SEOComponent: FC<SEOProps> = ({
         {
           name: `twitter:card`,
           content: `summary`
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author.name
         },
         {
           name: `twitter:title`,
