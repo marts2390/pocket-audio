@@ -18,7 +18,6 @@ interface IFooterComponentProps {
 const FooterComponent: FC<IFooterComponentProps> = ({
   menuItems,
 }) => {
-
   const footerData = useStaticQuery(graphql`
   {
     wpMediaItem(title: {eq: "logo-icon"}) {
@@ -40,7 +39,6 @@ const FooterComponent: FC<IFooterComponentProps> = ({
     }
   }
 `)
-
   return (
     <div className={ styles.footer }>
       {footerData.wpMediaItem && (

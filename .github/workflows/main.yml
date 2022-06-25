@@ -1,0 +1,17 @@
+name: Build and Deploy
+on:
+  push:
+    branches: master
+jobs:
+  build-and-deploy:
+    name: Build and deploy Gatsby site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH
+        uses: appleboy/ssh-action@master
+        with:
+         host: ${{ secrets.HOST }}
+         username: ${{ secrets.USERNAME }}
+         key: ${{ secrets.SSH_PRIVATE_KEY }}
+         port: ${{ secrets.PORT }}
+         script: cd /marts/pocket-audio; git pull; hugo; cp -r ./public/* /public_html/.; rm -rf ./public
