@@ -1,0 +1,36 @@
+@import 'src/view/styles/variables.scss';
+@import 'src/view/styles/classes.scss';
+
+.button-root {
+  font-weight: $font-semibold;
+  color: $white;
+  min-width: 15em;
+  margin-top: 1.5em;
+
+  &:hover {
+    background-color: rgba($primary, 0.85);
+  }
+}
+
+.success {
+  font-size: 1.6rem;
+}
+
+.outlined {
+  background-color: rgba($primary, 0.1);
+  border-color: $primary;
+  transition: 0.3s ease;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.contained {
+  background-color: $primary;
+}
+
+.error {
+  color: $red;
+  font-weight: $font-medium;
+}

@@ -54,11 +54,17 @@
         align-items: center;
         justify-content: center;
         padding: 1em;
+<<<<<<< HEAD
         text-align: center;
+=======
+>>>>>>> 4977f422060fe32738b9114feddb7cfcd427cef7
 
         h4 {
           color: $white;
-          font-size: $font-lg;
+          font-size: $font-md;
+          letter-spacing: 2px;
+          font-weight: $font-medium;
+          text-align: center;
         }
       }
     }

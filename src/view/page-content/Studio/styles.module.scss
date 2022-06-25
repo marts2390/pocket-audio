@@ -3,30 +3,56 @@
 
 .studio {
   .main {
-    padding: 2em 2em;
+    padding: 2em;
     @extend .container;
 
-    @media(min-width: $screen-sm) {
-      padding: 6em 2em;
-    }
-  }
-
-  .masonry-grid-container {
-    .masonry-grid {
-      display: flex;
-      margin-left: -0.5em; /* gutter size offset */
-      width: auto;
+    @media (min-width: $screen-sm) {
+      padding: 4em;
     }
 
-    .masonry-grid-column {
-      padding-left: 0.5em; /* gutter size */
-      background-clip: padding-box;
+    .section-title {
+      font-size: 2rem;
+      display: block;
+      max-width: 10em;
+      text-align: center;
+      margin: 0 auto;
+      padding-bottom: 0.25em;
+      margin-bottom: 1.5em;
+      border-bottom: 4px solid $primary;
     }
 
-    /* Style your items */
-    .masonry-grid-column > div {
-      /* change div to reference your elements you put in <Masonry> */
-      margin-bottom: 0.25em;
+    h4 {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin-bottom: 1em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.8rem;
+      padding-bottom: 1em;
+
+      @media (min-width: $screen-sm) {
+        font-size: 1.2rem;
+      }
+    }
+
+    .gear-list-item {
+      border-radius: 4px;
+      height: 100%;
+      padding-right: 4em;
+
+      h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1em;
+        letter-spacing: 2px;
+        border-bottom: 3px solid $primary;
+      }
+
+      li {
+        margin-bottom: 1em;
+        list-style: inside;
+        font-size: $font-sm;
+        font-weight: $font-medium;
+      }
     }
   }
 }

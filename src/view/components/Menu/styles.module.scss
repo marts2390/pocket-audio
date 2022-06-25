@@ -1,4 +1,10 @@
+@import 'src/view/styles/variables.scss';
+
 .menu {
-  display: flex;
-  align-items: center;
+  text-align: center;
+
+  @media(min-width: $screen-sm) {
+    display: flex;
+    align-items: center;
+  }
 }

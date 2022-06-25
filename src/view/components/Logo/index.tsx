@@ -1,21 +1,19 @@
 import React, { FC } from "react"
+import { Link } from "gatsby"
 import styles from './styles.module.scss'
 
 interface ILogoComponent {
-  logoData: {
-    altText: string;
-    id: string;
-    mediaItemUrl: string;
-  }
+ logoUrl: string;
 }
 
-const LogoComponent:FC<ILogoComponent> = ({ logoData }) => {
-  const { mediaItemUrl } = logoData
+const LogoComponent:FC<ILogoComponent> = ({ logoUrl }) => {
   return (
-    <img
-      className={ styles.logo }
-      src={ mediaItemUrl }
-    />
+    <Link to="/home">
+      <img
+        className={ styles.logo }
+        src={ logoUrl }
+      />
+    </Link>
   )
 }
 

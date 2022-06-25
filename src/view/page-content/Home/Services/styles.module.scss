@@ -18,10 +18,10 @@
     p {
       padding-top: 0.5em;
       font-weight: $font-medium;
-      font-size: 1rem;
+      font-size: 0.85rem;
 
       @media(min-width: $screen-sm) {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
     }
   }
