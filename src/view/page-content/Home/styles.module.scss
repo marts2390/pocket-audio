@@ -6,16 +6,25 @@
     background-position: center;
     background-size: cover;
     min-height: 100vh;
-    max-height: 900px;
+    max-height: 700px;
     position: relative;
+    background-color: black;
+    overflow: hidden;
 
     @media (min-width: $screen-sm) {
       min-height: 95vh;
     }
 
     .video {
-      width: 100%;
       height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      @media (min-width: 2400px) {
+        width: 100%;
+        position: relative;
+      }
     }
 
     .text-logo {
@@ -42,14 +51,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba($black, 0.75);
       display: flex;
       flex-direction: column;
       justify-content: center;
-
-      @media (min-width: $screen-md) {
-        background-color: rgba($black, 0.35);
-      }
 
       .banner-content {
         text-align: center;
@@ -69,7 +73,7 @@
           padding: 2em;
 
           @media (min-width: $screen-md) {
-            background-color: rgba($black, 0.5);
+            background-color: rgba($black, 0.75);
             border-radius: 6px;
           }
 

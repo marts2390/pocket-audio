@@ -8,6 +8,7 @@ import Seo from '../view/components/Seo'
 const HomePageComponent:FC = (dataProps: any) => {
   const { data } = dataProps
   const { title, metaDesc } = data.wpPage.seo
+
   return (
     <Layout>
       <Seo

@@ -2,8 +2,9 @@
 import React, { FC } from 'react'
 import styles from './styles.module.scss'
 import Button from '../../components/Button'
-import promoVideo from '../../../assets/promo-vid.mp4'
+import promoVideo from '../../../images/promo-vid.mp4'
 import { Link } from 'gatsby'
+import { Fade } from '@material-ui/core'
 
 import ServicesComponent from './Services'
 import ProjectsComponent from './Projects'
@@ -25,17 +26,19 @@ const HomePageComponent: FC<IHomeScreenProps> = ({ data }) => {
         className={ styles.banner }
         // style={ { backgroundImage: bannerUrl } }
       >
-        <video
-          className={ styles.video }
-          loop
-          autoPlay
-          muted
-        >
-          <source
-            src={ promoVideo }
-            type="video/mp4"
-          />
-        </video>
+        <Fade in>
+          <video
+            className={ styles.video }
+            loop
+            autoPlay
+            muted
+          >
+            <source
+              src={ promoVideo }
+              type="video/mp4"
+            />
+          </video>
+        </Fade>
         <div className={ styles.bannerOverlay }>
           <div className={ styles.bannerContent }>
             <div className={ styles.bannerInner }>
@@ -65,15 +68,13 @@ const HomePageComponent: FC<IHomeScreenProps> = ({ data }) => {
       <div className={ styles.main }>
         <div className={ styles.bioText }>
           <div className={ styles.text } >
-            <h2>Professional Recording Studio in the heart of Brighton and Hove</h2>
-            <h4>Led by professional producer / musician / engineer Alex Barron</h4>
-            <h4>We provide services for Musicians, Audio Engineers, Composition, Remote sessions 
-              and bespoke recording sessions for all creatives.</h4>
-            <p>For the past ten years we have been working with an array of artists of all genres, 
-              post production services, library music and so much more.</p>
-            <p>We take pride in our work here and will go the extra mile to ensure that 
-              we provide the highest quality services.</p>
-            <p>ASSISTED BY FRED HILLS - PROFESSIONAL DRUMMER / COMPOSER / COLLABORATOR</p>
+            <h2>Recording Studio in the heart of Brighton and Hove</h2>
+            <h4>OUR ethos at The Yard is to bring our expertise to every project and go the extra mile to 
+              achieve the best possible results. We work closely with a range of creatives, offering 
+              bespoke services in a comfortable and relaxed environment.</h4>
+            <p>Drawing on over twenty years of experience, we take a unique and tailored approach when 
+              working with the array of artists and bands who come through our door.</p>
+            <p>If you have a vision for your music, we’re here to help you capture it!</p>
           </div>
         </div>
         <div className={ styles.services }>

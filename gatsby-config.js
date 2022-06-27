@@ -42,9 +42,13 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        typeName: "WPGraphQL",
-        fieldName: "wpcontent",
         url: `https://admin.theyardrecording.com/graphql`,
+        production: {
+          hardCacheMediaFiles: true,
+        },
+        develop: {
+          hardCacheMediaFiles: true,
+        },
       },
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

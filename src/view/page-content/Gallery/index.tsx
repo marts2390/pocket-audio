@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import Masonry from 'react-masonry-css'
 import { Fade } from 'react-reveal'
+import { useStaticQuery, graphql } from 'gatsby'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints'
 import  ImageModal from '../../components/ImageModal'
 import actions from '../../../actions'

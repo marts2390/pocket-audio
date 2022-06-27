@@ -24,19 +24,19 @@ const StudioPageComponent: FC<IStudioPageComponentProps> = ({ data }) => {
 
   const gearList = [{
     title: listOneTitle,
-    list: listOneList.split(','),
+    list: listOneList.split(';'),
   }, 
   {
     title: listTwoTitle,
-    list: listTwoList.split(','),
+    list: listTwoList.split(';'),
   }, 
   {
     title: listThreeTitle,
-    list: listThreeList.split(','),
+    list: listThreeList.split(';'),
   },
   {
     title: listFourTitle,
-    list: listFourList.split(','),
+    list: listFourList.split(';'),
   }]
 
   return (

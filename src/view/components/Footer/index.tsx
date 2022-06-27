@@ -5,19 +5,7 @@ import Logo from '../Logo'
 import styles from './styles.module.scss'
 import SocialLinks from '../SocialLinks'
 
-interface IFooterComponentProps {
-  menuItems: {
-    id: string;
-    label: string;
-    url: string;
-    title: string;
-    target: string;
-  }[]
-}
-
-const FooterComponent: FC<IFooterComponentProps> = ({
-  menuItems,
-}) => {
+const FooterComponent: FC = () => {
   const footerData = useStaticQuery(graphql`
   {
     wpMediaItem(title: {eq: "logo-icon"}) {
@@ -39,6 +27,7 @@ const FooterComponent: FC<IFooterComponentProps> = ({
     }
   }
 `)
+
   return (
     <div className={ styles.footer }>
       {footerData.wpMediaItem && (
